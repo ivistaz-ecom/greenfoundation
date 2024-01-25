@@ -10,42 +10,39 @@ import JourneySoFar from './JourneySoFar'
 import JourneyHeader from './JourneyHeader'
 import JourneySoFarTimeline from './JourneySoFarTimeline';
 import Script from 'next/script';
-
-
-
+import Schema from '@/components/SchemaComponents/Schema';
+// import { JsonLd } from 'next-seo/lib/jsonld/jsonld';
 
 const index = () => {
   return (
     <>
-      <Script src='https://www.greenfoundation.in/wp-content/themes/hello-elementor-child/js/index-generated.js' />
-      <Script src='https://www.greenfoundation.in/wp-content/themes/hello-elementor-child/js/libraries-generated.js' />
       <NextSeo
         title="29 years of empowering small scale farmer communities"
         description="From empowering small scale farmers to initiating a growing biodiversity conservation programme, Green Foundation has taken a holistic approach to empower communities since 1994."
-        canonical="https://www.canonical.ie/"
+        canonical="https://greenfoundation.in/journey-so-far"
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: 'https://greenfoundation.in/journey-so-far',
           title: '29 years of empowering small scale farmer communities',
           description: 'From empowering small scale farmers to initiating a growing biodiversity conservation programme, Green Foundation has taken a holistic approach to empower communities since 1994.',
           images: [
             {
-              url: 'https://greenfoundation.in/wp-content/uploads/2023/02/Group-25828.png',
+              url: '',
               width: 800,
               height: 600,
               alt: 'Journey So Far',
               type: 'image/jpeg',
             },
             {
-              url: 'https://greenfoundation.in/wp-content/uploads/2023/02/Group-25828.png',
+              url: '',
               width: 900,
               height: 800,
               alt: 'Journey So Far',
               type: 'image/jpeg',
             },
-            { url: 'https://greenfoundation.in/wp-content/uploads/2023/02/Group-25828.png' },
-            { url: 'https://greenfoundation.in/wp-content/uploads/2023/02/Group-25828.png' },
+            { url: '' },
+            { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -54,6 +51,11 @@ const index = () => {
         }}
       />
 
+      <link rel="canonical" href="https://greenfoundation.in/journey-so-far" />
+
+      <Schema
+        target="journey-so-far"
+      />
       <Header />
       <JourneyHeader />
       <JourneySoFar />
