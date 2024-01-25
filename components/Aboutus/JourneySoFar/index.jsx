@@ -54,6 +54,22 @@ const index = () => {
         }}
       />
 
+      {/* JSON-LD structured data */}
+      {/* JSON-LD structured data */}
+      <JsonLd
+        schema={{
+          "@context": "https://schema.org/",
+          "@type": "WebSite",
+          "name": "GreenFoundation",
+          "url": "https://greenfoundation.in/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://greenfoundation.in/journey-so-far{search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }}
+      />
+
       <Header />
       <JourneyHeader />
       <JourneySoFar />

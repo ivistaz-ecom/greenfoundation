@@ -52,7 +52,8 @@ const index = () => {
         }}
       />
       <link rel="canonical" href="https://greenfoundation.in/" />
-      <WebsiteSchema/>
+
+      <WebsiteSchema />
       <Header />
       <HeroBanner />
       <OurWork />
