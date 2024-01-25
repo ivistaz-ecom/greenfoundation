@@ -10,9 +10,7 @@ import JourneySoFar from './JourneySoFar'
 import JourneyHeader from './JourneyHeader'
 import JourneySoFarTimeline from './JourneySoFarTimeline';
 import Script from 'next/script';
-
-
-
+// import { JsonLd } from 'next-seo/lib/jsonld/jsonld';
 
 const index = () => {
   return (
@@ -54,9 +52,9 @@ const index = () => {
         }}
       />
 
-      {/* JSON-LD structured data */}
-      {/* JSON-LD structured data */}
-      <JsonLd
+      <link rel="canonical" href="https://greenfoundation.in/journey-so-far" />
+
+      {/* <JsonLd
         schema={{
           "@context": "https://schema.org/",
           "@type": "WebSite",
@@ -68,7 +66,7 @@ const index = () => {
             "query-input": "required name=search_term_string"
           }
         }}
-      />
+      /> */}
 
       <Header />
       <JourneyHeader />
