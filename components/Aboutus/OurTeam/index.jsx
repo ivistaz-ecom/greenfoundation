@@ -9,19 +9,22 @@ import CoreTeam from './CoreTeam'
 import Banner from '../OurTeam/Banner'
 import { NextSeo } from 'next-seo'
 import AllPageSchema from '@/components/SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 
 const index = () => {
+
+  const pathname = usePathname();
+
   return (
     <>
-
       <NextSeo
         title="Core team - Green Foundation
       "
         description=""
-        canonical="https://greenfoundation.in/core-team"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://greenfoundation.in/core-team',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Core team - Green Foundation',
           description: '',
           images: [
@@ -51,10 +54,10 @@ const index = () => {
         }}
       />
 
-      <link rel="canonical" href="https://greenfoundation.in/core-team" />
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
 
       <AllPageSchema
-        target="core-team"
+        target={`${pathname}`}
       />
 
 

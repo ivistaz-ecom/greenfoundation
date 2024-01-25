@@ -8,17 +8,22 @@ import SeedYatrasHeader from './SeedYatrasHeader'
 import SeedYatrasBanner from './SeedYatrasBanner'
 import SeedYatrasContent from './SeedYatrasContent'
 import { NextSeo } from 'next-seo'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
 
 const index = () => {
+
+  const pathname = usePathname();
+
   return (
     <>
 
-<NextSeo
+      <NextSeo
         title="Seed yatras and fairs - Green Foundation"
         description=""
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Seed yatras and fairs - Green Foundation',
           description: '',
           images: [
@@ -39,7 +44,7 @@ const index = () => {
             { url: '/our-work/seed-yatras/seed_yatras_img.png' },
             { url: '/our-work/seed-yatras/seed_yatras_img.png' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -48,11 +53,17 @@ const index = () => {
         }}
       />
 
-    <Header />
-    <SeedYatrasHeader />
-    <SeedYatrasBanner />
-    <SeedYatrasContent />
-    <Footer />
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+      <Header />
+      <SeedYatrasHeader />
+      <SeedYatrasBanner />
+      <SeedYatrasContent />
+      <Footer />
     </>
   )
 }

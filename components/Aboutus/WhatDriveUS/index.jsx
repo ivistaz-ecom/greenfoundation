@@ -17,21 +17,24 @@ import WomenEmpowerment from './WomenEmpowerment'
 import { NextSeo } from 'next-seo'
 
 import Schema from '@/components/SchemaComponents/Schema';
+import { usePathname } from 'next/navigation'
 
 
 
 
 
 const index = () => {
+
+  const pathname = usePathname();
   return (
     <>
 
       <NextSeo
         title="Why We Do This - Green Foundation"
         description=""
-        canonical="https://greenfoundation.in/why-we-do-this"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://greenfoundation.in/why-we-do-this',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Why We Do This - Green Foundation',
           description: '',
           images: [
@@ -62,10 +65,10 @@ const index = () => {
       />
 
 
-      <link rel="canonical" href="https://greenfoundation.in/why-we-do-this" />
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
 
       <Schema
-        target="/why-we-do-this"
+        target={`${pathname}`}
       />
 
 

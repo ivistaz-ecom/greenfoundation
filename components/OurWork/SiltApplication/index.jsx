@@ -8,53 +8,61 @@ import SiltAppHeader from './SiltAppHeader'
 import SiltAppBanner from './SiltAppBanner'
 import SiltAppContent from './SiltAppContent'
 import { NextSeo } from 'next-seo'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
 
-<NextSeo
-      title="Silt application - Green Foundation"
-      description=""
-      canonical="https://www.canonical.ie/"
-      openGraph={{
-        url: 'https://www.url.ie/a',
-        title: 'Silt application - Green Foundation',
-        description: '',
-        images: [
-          {
-            url: '',
-            width: 800,
-            height: 600,
-            alt: 'Silt application - Green Foundation            ',
-            type: 'image/jpeg',
-          },
-          {
-            url: '',
-            width: 900,
-            height: 800,
-            alt: 'Silt application - Green Foundation            ',
-            type: 'image/jpeg',
-          },
-          { url: '' },
-          { url: '' },
-        ],
-        siteName: 'SiteName',
-      }}
-      twitter={{
-        handle: '@handle',
-        site: '@site',
-        cardType: 'summary_large_image',
-      }}
-    />
+      <NextSeo
+        title="Silt application - Green Foundation"
+        description=""
+        canonical={`https://greenfoundation.in${pathname}`}
+        openGraph={{
+          url: `https://greenfoundation.in${pathname}`,
+          title: 'Silt application - Green Foundation',
+          description: '',
+          images: [
+            {
+              url: '',
+              width: 800,
+              height: 600,
+              alt: 'Silt application - Green Foundation            ',
+              type: 'image/jpeg',
+            },
+            {
+              url: '',
+              width: 900,
+              height: 800,
+              alt: 'Silt application - Green Foundation            ',
+              type: 'image/jpeg',
+            },
+            { url: '' },
+            { url: '' },
+          ],
+          siteName: 'GreenFoundation',
+        }}
+        twitter={{
+          handle: '@handle',
+          site: '@site',
+          cardType: 'summary_large_image',
+        }}
+      />
 
-    <Header />
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
 
-    <SiltAppHeader />
-    <SiltAppBanner />
-    <SiltAppContent />
+      <AllPageSchema
+        target={`${pathname}`}
+      />
 
-    <Footer />
+      <Header />
+      <SiltAppHeader />
+      <SiltAppBanner />
+      <SiltAppContent />
+
+      <Footer />
     </>
   )
 }

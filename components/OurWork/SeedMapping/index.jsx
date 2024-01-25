@@ -9,17 +9,21 @@ import SeedMappingHeader from './SeedMappingHeader'
 import SeedMappingContent from './SeedMappingContent'
 import SeedMappingBanner from './SeedMappingBanner'
 import { NextSeo } from 'next-seo'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
-  return (
-   <>
 
-  <NextSeo
+  const pathname = usePathname();
+  return (
+    <>
+
+      <NextSeo
         title="Seed Mapping"
         description="The Seed Mapping project from Green Foundation has helped is determining the variety of indigenous seeds present within a particular area, resulting in better outcomes"
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Seed Mapping',
           description: 'The Seed Mapping project from Green Foundation has helped is determining the variety of indigenous seeds present within a particular area, resulting in better outcomes',
           images: [
@@ -40,7 +44,7 @@ const index = () => {
             { url: '/our-work/seed-mapping/seed_mapping_img_1.png' },
             { url: '/our-work/seed-mapping/seed_mapping_img_1.png' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -49,12 +53,18 @@ const index = () => {
         }}
       />
 
-   <Header />
-   <SeedMappingHeader />
-   <SeedMappingBanner />
-   <SeedMappingContent />
-   <Footer />
-   </>
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+      <Header />
+      <SeedMappingHeader />
+      <SeedMappingBanner />
+      <SeedMappingContent />
+      <Footer />
+    </>
   )
 }
 

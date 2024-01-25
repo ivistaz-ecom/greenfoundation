@@ -10,15 +10,14 @@ import AgroHeader from './AgroHeader'
 import AgroBanner from './AgroBanner'
 import AgroContent from './AgroContent'
 import { NextSeo } from 'next-seo'
-import {usePathname} from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
 
 const Agro = () => {
   const pathname = usePathname()
   return (
     <>
-
-  
-  <NextSeo
+      <NextSeo
         title="Seed Banks: Preserving Agrobiodiversity"
         description="Empowering communities to conserve biological diversity practice sustainable agriculture through community seed banks GREEN s pioneering efforts inspire nationwide impact"
         canonical={`https://greenfoundation.in${pathname}`}
@@ -44,7 +43,7 @@ const Agro = () => {
             { url: '/our-work/agrobio/agrobiodiversity_v.png' },
             { url: '/our-work/agrobio/agrobiodiversity_v.png' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -53,13 +52,17 @@ const Agro = () => {
         }}
       />
 
-    <Header />
-    <AgroHeader />
-    <AgroBanner />
-    <AgroContent />
-    <Footer />
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+      <Header />
+      <AgroHeader />
+      <AgroBanner />
+      <AgroContent />
+      <Footer />
     </>
-    
+
   )
 }
 

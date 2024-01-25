@@ -9,17 +9,19 @@ import Banner from './Banner'
 import OurPartners from './OurPartners'
 import { NextSeo } from 'next-seo'
 import AllPageSchema from '@/components/SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
 
       <NextSeo
         title="Green Foundation I Partners"
         description="Green Foundation takes pride in working with partners who share the same vision of conserving agrobiodiversity and building health, wealth and resilience of small farmers"
-        canonical="https://greenfoundation.in/partners"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://greenfoundation.in/partners',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Green Foundation I Partners',
           description: 'Green Foundation takes pride in working with partners who share the same vision of conserving agrobiodiversity and building health, wealth and resilience of small farmers',
           images: [
@@ -49,11 +51,11 @@ const index = () => {
         }}
       />
 
-      <link rel="canonical" href="https://greenfoundation.in/partners" />
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
 
 
       <AllPageSchema
-        target="partners"
+        target={`${pathname}`}
       />
 
 
