@@ -11,17 +11,19 @@ import JourneyHeader from './JourneyHeader'
 import JourneySoFarTimeline from './JourneySoFarTimeline';
 import Script from 'next/script';
 import Schema from '@/components/SchemaComponents/Schema';
+import { usePathname } from 'next/navigation';
 // import { JsonLd } from 'next-seo/lib/jsonld/jsonld';
 
 const index = () => {
+  const pathname = usePathname()
   return (
     <>
       <NextSeo
         title="29 years of empowering small scale farmer communities"
         description="From empowering small scale farmers to initiating a growing biodiversity conservation programme, Green Foundation has taken a holistic approach to empower communities since 1994."
-        canonical="https://greenfoundation.in/journey-so-far"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://greenfoundation.in/journey-so-far',
+          url: `https://greenfoundation.in${pathname}`,
           title: '29 years of empowering small scale farmer communities',
           description: 'From empowering small scale farmers to initiating a growing biodiversity conservation programme, Green Foundation has taken a holistic approach to empower communities since 1994.',
           images: [
@@ -51,10 +53,10 @@ const index = () => {
         }}
       />
 
-      <link rel="canonical" href="https://greenfoundation.in/journey-so-far" />
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
 
       <Schema
-        target="journey-so-far"
+        target={`${pathname}`}
       />
       <Header />
       <JourneyHeader />

@@ -9,17 +9,20 @@ import AwardsBanner from './AwardsBanner'
 import Awards from './Awards'
 import { NextSeo } from 'next-seo'
 import AllPageSchema from '@/components/SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
+
+  const pathname = usePathname();
   return (
     <>
 
       <NextSeo
         title="Recognition that reinforces our mission"
         description="Our work in building communities through agro biodiversity conversation has won us many accolades and awards The recognition is proof we are heading in the right direction"
-        canonical="https://greenfoundation.in/awards-and-recognitions"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://greenfoundation.in/awards-and-recognitions',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Recognition that reinforces our mission',
           description: 'Our work in building communities through agro biodiversity conversation has won us many accolades and awards The recognition is proof we are heading in the right direction',
           images: [
@@ -49,10 +52,10 @@ const index = () => {
         }}
       />
 
-      <link rel="canonical" href="https://greenfoundation.in/awards-and-recognitions" />
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
 
       <AllPageSchema
-        target="awards-and-recognitions"
+        target={`${pathname}`}
       />
 
 

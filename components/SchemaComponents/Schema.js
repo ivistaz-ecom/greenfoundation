@@ -10,7 +10,7 @@ const AllPageSchema = ({ target }) => {
         "url": "https://greenfoundation.in/",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": `https://greenfoundation.in/${target}{search_term_string}`,
+            "target": `https://greenfoundation.in${target}{search_term_string}`,
             "query-input": "required name=search_term_string"
         }
     };
