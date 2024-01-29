@@ -9,6 +9,8 @@ import Footer from '../components/shared/Footer';
 import { NextSeo } from 'next-seo';
 
 import config from '../config.json'
+import NewsEventsShema from '@/components/SchemaComponents/NewsEventsShema';
+import { usePathname } from 'next/navigation';
 
 
 
@@ -16,6 +18,8 @@ export default function Page() {
     const router = useRouter()
     const [data, setData] = useState([]);
     const slug = router.query.slug;
+
+    const pathname = usePathname();
 
     const URL_SEO = `${config.apiDomain}posts/${slug}&_embed`;
 
@@ -26,7 +30,7 @@ export default function Page() {
         let result = await fetch(URL_Fetchpost);
         result = await result.json();
         setData(result);
-        // console.log(result);
+        console.log(result);
 
     }
 
@@ -58,7 +62,7 @@ export default function Page() {
                                 <NextSeo
                                     title={item.yoast_head_json?.title}
                                     description={item.yoast_head_json?.description}
-                                    canonical={URL_SEO}
+                                    canonical={`https://greenfoundation.in${pathname}`}
                                     openGraph={{
                                         title: item.yoast_head_json?.title,
                                         description: item.yoast_head_json?.description,
@@ -73,7 +77,19 @@ export default function Page() {
                                         ],
                                     }}
                                 />
+
+                                <NewsEventsShema
+                                    headline={item.title.rendered}
+                                    description={item.yoast_head_json?.description}
+                                    image=""
+                                    authorName=""
+                                    articleUrl={`https://greenfoundation.in${pathname}`}
+                                    publisherName=""
+                                    publisherLogoUrl=""
+                                    datePublished={formatPublishedDate(item.date)}
+                                />
                             </div>
+
                         ))}
                     </div>
 

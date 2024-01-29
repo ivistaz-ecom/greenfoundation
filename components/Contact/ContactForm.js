@@ -143,7 +143,7 @@ const ContactForm = () => {
                             </Col>
                             {spinner && <div className="spinner-border text-light" role="status" />}
 
-                            <button type='submit' className='btn btn-primary register ' onClick={createPost}>Submit</button>
+                            <button type='submit' className='btn btn-primary register mt-4' onClick={createPost}>Submit</button>
                         </form>
                     }
 

@@ -5,16 +5,22 @@ import Footer from '../../shared/Footer'
 // import NewsEventsLoopTemplate from '@/components/LoopTemplate/NewsEventsLoopTemplate'
 import { NextSeo } from 'next-seo'
 import NewsAndEvnetsPost from './NewsAndEvnetsPost'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
+import NewsEventsShema from '@/components/SchemaComponents/NewsEventsShema'
 
 const index = () => {
+
+  const pathname = usePathname();
+
   return (
     <>
       <NextSeo
         title="News and Events - Green Foundation"
         description=""
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'News and Events - Green Foundation',
           description: '',
           images: [
@@ -35,7 +41,7 @@ const index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -43,6 +49,17 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <NewsEventsShema />
+
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+
       <Header />
       <NewsAndEvnetsPost />
       {/* <NewsEventsLoopTemplate /> */}

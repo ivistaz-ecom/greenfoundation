@@ -6,16 +6,19 @@ import Footer from '../../shared/Footer'
 import '../../Style'
 import YoutubeVideosStatic from './YoutubeVideosStatic'
 import { NextSeo } from 'next-seo'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
-    <NextSeo
+      <NextSeo
         title="GREEN’s work related videos - Green Foundation"
         description=""
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'GREEN’s work related videos - Green Foundation',
           description: '',
           images: [
@@ -44,9 +47,17 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
-    <Header />
-    <YoutubeVideosStatic />
-    <Footer />
+
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+      <Header />
+      <YoutubeVideosStatic />
+      <Footer />
     </>
   )
 }

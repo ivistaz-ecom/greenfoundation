@@ -7,16 +7,19 @@ import PolicyEngagementContent from './PolicyEngagementContent'
 
 import '../Style'
 import { NextSeo } from 'next-seo'
+import AllPageSchema from '../SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
-    <NextSeo
+      <NextSeo
         title="Our Policy Engagement"
         description="Read about Green Foundation s stance and focus on policies for a variety of topics including Hybrid seeds, Organic seeds, seed production and more"
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Our Policy Engagement',
           description: 'Read about Green Foundation s stance and focus on policies for a variety of topics including Hybrid seeds, Organic seeds, seed production and more',
           images: [
@@ -37,7 +40,7 @@ const index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -45,10 +48,18 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
-    <Header />
-    <PolicyEngagementBanner />
-    <PolicyEngagementContent />
-    <Footer />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+
+      <Header />
+      <PolicyEngagementBanner />
+      <PolicyEngagementContent />
+      <Footer />
     </>
   )
 }
