@@ -35,7 +35,7 @@ export default function Page() {
 
             const result = await response.json();
             setData(result);
-            console.log(result);
+            // console.log(result);
         } catch (error) {
             console.error('Error fetching data:', error.message);
         }
