@@ -30,7 +30,7 @@ const index = () => {
     <>
 
       <NextSeo
-        title="Why We Do This - Green Foundation"
+        title="Agro Biodiversity Conservation I Our reasons "
         description=""
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{

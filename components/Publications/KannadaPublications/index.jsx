@@ -8,17 +8,22 @@ import Head from 'next/head'
 import KannadaPublicationHeader from './KannadaPublicationHeader'
 import KannadaPublicationsContent from './KannadaPublicationsContent'
 import { NextSeo } from 'next-seo'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
 
 
 const index = () => {
+
+  const pathname = usePathname();
+
   return (
     <>
-    <NextSeo
+      <NextSeo
         title="Kannada Publication - Green Foundation"
         description=""
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Kannada Publication - Green Foundation',
           description: '',
           images: [
@@ -39,7 +44,7 @@ const index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -47,10 +52,17 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
-        <Header />
-        <KannadaPublicationHeader />
-        <KannadaPublicationsContent />
-        <Footer />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+      <Header />
+      <KannadaPublicationHeader />
+      <KannadaPublicationsContent />
+      <Footer />
     </>
   )
 }

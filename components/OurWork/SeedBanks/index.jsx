@@ -55,7 +55,7 @@ const index = () => {
       <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
 
       <AllPageSchema
-        target={AllPageSchema}
+        target={`${pathname}`}
       />
 
       <Header />

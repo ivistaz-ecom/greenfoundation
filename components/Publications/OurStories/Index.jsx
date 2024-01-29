@@ -6,16 +6,21 @@ import Footer from '../../shared/Footer'
 import '../../Style'
 import OurStoriesLoopTemplate from '@/components/LoopTemplate/OurStoriesLoopTemplate'
 import { NextSeo } from 'next-seo'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
 
 const Index = () => {
+
+  const pathname = usePathname();
+
   return (
     <>
-    <NextSeo
+      <NextSeo
         title="Our Stories - Green Foundation"
         description=""
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Our Stories - Green Foundation',
           description: '',
           images: [
@@ -36,7 +41,7 @@ const Index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -44,9 +49,17 @@ const Index = () => {
           cardType: 'summary_large_image',
         }}
       />
-    <Header />
-    <OurStoriesLoopTemplate />
-    <Footer />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+
+      <Header />
+      <OurStoriesLoopTemplate />
+      <Footer />
     </>
   )
 }

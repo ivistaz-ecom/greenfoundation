@@ -9,6 +9,8 @@ import Footer from '../components/shared/Footer';
 import { NextSeo } from 'next-seo';
 
 import config from '../config.json'
+import { usePathname } from 'next/navigation';
+import AllPageSchema from '@/components/SchemaComponents/Schema';
 
 
 
@@ -16,71 +18,114 @@ export default function Page() {
     const router = useRouter()
     const [data, setData] = useState([]);
     const slug = router.query.slug;
+    const currentPath = router.asPath;
 
-    const URL_SEO = `${config.apiDomain}posts/${slug}&_embed`;
+    const pathname = usePathname();
 
+    // const URL_SEO = `${config.apiDomain}posts/${slug}&_embed`;
 
-    const FetchPost = async () => {
-        const URL_Fetchpost = `${config.apiDomain}posts?&slug=${slug}&_embed=1`;
-        // const url = `https://beta.greenfoundation.in/wp-json/wp/v2/posts?&slug=${slug}&_embed`;
-        let result = await fetch(URL_Fetchpost);
-        result = await result.json();
-        setData(result);
-        // console.log(result);
+    const fetchPost = async () => {
+        try {
+            const urlFetchPost = `${config.apiDomain}posts?&slug=${slug}&_embed`;
+            // const urlFetchPost = `https://beta.greenfoundation.in/wp-json/wp/v2/posts?&slug=${slug}&_embed`;
+            const response = await fetch(urlFetchPost);
 
-    }
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+            }
 
-    console.log()
+            const result = await response.json();
+            setData(result);
+            // console.log(result);
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
+    };
 
     useEffect(() => {
-
-        FetchPost();
-    }, [slug])
-
+        fetchPost();
+    }, [slug]);
 
     const formatPublishedDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
+    const customCanonicalURL = 'https://greenfoundation.in/';
+
+
     return (
         <>
+
+
+            {/* Yoast SEO */}
+            <div>
+                {data.map((item) => (
+                    <div key={item.id}>
+                        {/* Other post details */}
+                        <NextSeo
+                            title={item.yoast_head_json?.title}
+                            description={item.yoast_head_json?.description}
+                            // canonical={`https://greenfoundation.in${pathname}`}
+                            canonical={`https://greenfoundation.in${currentPath}`}
+                            openGraph={{
+                                url: `https://greenfoundation.in${pathname}`,
+                                title: item.yoast_head_json?.title,
+                                description: item.yoast_head_json?.description,
+                                url: "",
+                                images: [
+                                    {
+                                        url: item._embedded['wp:featuredmedia'][0].source_url,
+                                        width: 800,
+                                        height: 600,
+                                        alt: item.title?.rendered,
+                                    },
+                                ],
+                                "@context": "https://schema.org",
+                                "@type": "Article",
+                                "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": `https://greenfoundation.in${pathname}`
+                                },
+                                "author": {
+                                    "@type": "Person",
+                                    "name": "",
+                                    "url": `https://greenfoundation.in${pathname}`
+                                },
+                                "publisher": {
+                                    "@type": "Organization",
+                                    "name": "",
+                                    "logo": {
+                                        "@type": "ImageObject",
+                                        "url": ""
+                                    }
+                                },
+                                "datePublished": item.date
+                            }}
+                        />
+                        {/* <h2 dangerouslySetInnerHTML={{ __html: item.title.rendered }} /> */}
+
+                    </div>
+                ))}
+            </div>
+
+            <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+            <AllPageSchema
+                target={`${pathname}`}
+            />
+
             <Header />
 
             <Container fluid className='w-100'>
                 <Container className='py-5 p-0'>
 
-                    {/* Yoast SEO */}
-                    <div>
-                        {data.map((item) => (
-                            <div key={item.id}>
-                                {/* Other post details */}
-                                <NextSeo
-                                    title={item.yoast_head_json?.title}
-                                    description={item.yoast_head_json?.description}
-                                    canonical={URL_SEO}
-                                    openGraph={{
-                                        title: item.yoast_head_json?.title,
-                                        description: item.yoast_head_json?.description,
-                                        url: URL_SEO,
-                                        images: [
-                                            {
-                                                url: item._embedded['wp:featuredmedia'][0].source_url,
-                                                width: 800,
-                                                height: 600,
-                                                alt: item.title?.rendered,
-                                            },
-                                        ],
-                                    }}
-                                />
-                            </div>
-                        ))}
-                    </div>
-
                     <Link href='/news-and-events' className='d-flex flex-md-row flex-column gap-3 justify-md-content-start align-content-center align-items-center text-decoration-none '>
                         <Image src='/publications/our-stories/back_to_stories_icon_green.svg' alt='' />
                         <h5 className='p-0 m-0 text-green fw-bolder'>Back to News & Events</h5>
                     </Link>
+
+
 
 
                     <hr className='my-4' />
@@ -95,7 +140,9 @@ export default function Page() {
                                         <h4 dangerouslySetInnerHTML={{ __html: items.title.rendered }} />
                                     </div>
 
-                                    <p style={{ fontSize: '11px !important', color: '#126634' }}> {formatPublishedDate(items.date)} </p>
+                                    <p style={{ fontSize: '11px !important', color: '#126634' }}>
+                                        {formatPublishedDate(items.date)}
+                                    </p>
 
                                     {/* <p dangerouslySetInnerHTML={{ __html: items.content.rendered }} /> */}
                                     {/* <div dangerouslySetInnerHTML={{ __html: items.content.rendered.replace(/http:\/\/localhost:3000/g, config.apiDomain) }} /> */}

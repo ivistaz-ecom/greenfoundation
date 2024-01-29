@@ -7,16 +7,19 @@ import '../Style'
 import CertificationBanner from './CertificationBanner'
 import CertificationContent from './CertificationContent'
 import { NextSeo } from 'next-seo'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '../SchemaComponents/Schema'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
-  <NextSeo
+      <NextSeo
         title="Certification in Organic Farming"
         description="GREEN facilitates organic farming certification using a Participatory Guarantee System PGS which provides credibility for farmers and a higher rate for their produce"
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Certification in Organic Farming',
           description: 'GREEN facilitates organic farming certification using a Participatory Guarantee System PGS which provides credibility for farmers and a higher rate for their produce',
           images: [
@@ -37,7 +40,7 @@ const index = () => {
             { url: '/certification/participatory_guarantee_system_img.png' },
             { url: '/certification/participatory_guarantee_system_img.png' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -45,10 +48,17 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
-    <Header />
-    <CertificationBanner />
-    <CertificationContent />
-    <Footer />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
+      <Header />
+      <CertificationBanner />
+      <CertificationContent />
+      <Footer />
     </>
   )
 }

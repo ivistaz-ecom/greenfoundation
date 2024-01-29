@@ -8,16 +8,19 @@ import ContactForm from './ContactForm'
 import { NextSeo } from 'next-seo'
 import AutoLayoutExample from './Contactus'
 import Contact7Form from './Contact7Form'
+import { usePathname } from 'next/navigation'
+import AllPageSchema from '../SchemaComponents/Schema'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
       <NextSeo
         title="Contact - Green Foundation"
         description=""
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Contact - Green Foundation',
           description: '',
           images: [
@@ -38,7 +41,7 @@ const index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
@@ -46,6 +49,13 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+      />
+
       <Header />
       <ContactForm />
       {/* <AutoLayoutExample /> */}
