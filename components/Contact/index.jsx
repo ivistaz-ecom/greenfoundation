@@ -41,7 +41,7 @@ const index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoundation',
         }}
         twitter={{
           handle: '@handle',
