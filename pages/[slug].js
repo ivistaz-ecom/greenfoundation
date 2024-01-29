@@ -18,6 +18,7 @@ export default function Page() {
     const router = useRouter()
     const [data, setData] = useState([]);
     const slug = router.query.slug;
+    const currentPath = router.asPath;
 
     const pathname = usePathname();
 
@@ -50,6 +51,9 @@ export default function Page() {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
+    const customCanonicalURL = 'https://greenfoundation.in/';
+
+
     return (
         <>
 
@@ -62,7 +66,8 @@ export default function Page() {
                         <NextSeo
                             title={item.yoast_head_json?.title}
                             description={item.yoast_head_json?.description}
-                            canonical={`https://greenfoundation.in${pathname}`}
+                            // canonical={`https://greenfoundation.in${pathname}`}
+                            canonical={`https://greenfoundation.in${currentPath}`}
                             openGraph={{
                                 url: `https://greenfoundation.in${pathname}`,
                                 title: item.yoast_head_json?.title,
