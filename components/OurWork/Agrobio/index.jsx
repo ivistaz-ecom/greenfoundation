@@ -54,6 +54,7 @@ const Agro = () => {
 
       <AllPageSchema
         target={`${pathname}`}
+        type="website"
       />
 
       <Header />

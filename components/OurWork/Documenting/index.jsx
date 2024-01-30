@@ -10,6 +10,7 @@ import DocBanner from './DocBanner'
 import DocContent from './DocContent'
 import { NextSeo } from 'next-seo'
 import { usePathname } from 'next/navigation'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
 
 const index = () => {
   const pathname = usePathname();
@@ -50,6 +51,13 @@ const index = () => {
           site: '@site',
           cardType: 'summary_large_image',
         }}
+      />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+        type="website"
       />
 
       <Header />

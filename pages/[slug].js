@@ -84,7 +84,7 @@ export default function Page() {
                                 "@context": "https://schema.org",
                                 "@type": "Article",
                                 "mainEntityOfPage": {
-                                    "@type": "WebPage",
+                                    "@type": "NewsArticle",
                                     "@id": `https://greenfoundation.in${pathname}`
                                 },
                                 "author": {
@@ -113,6 +113,7 @@ export default function Page() {
 
             <AllPageSchema
                 target={`${pathname}`}
+                type="NewsArticle"
             />
 
             <Header />

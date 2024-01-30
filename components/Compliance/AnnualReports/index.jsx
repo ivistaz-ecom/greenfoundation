@@ -7,16 +7,19 @@ import AnnualReportsContent from './AnnualReportsContent'
 import { NextSeo } from 'next-seo'
 
 import '../../Style'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
       <NextSeo
         title="Annual Reports - Green Foundation"
         description="Empowering communities to conserve biological diversity practice sustainable agriculture through community seed banks GREEN s pioneering efforts inspire nationwide impact"
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Annual Reports - Green Foundation',
           description: 'Empowering communities to conserve biological diversity practice sustainable agriculture through community seed banks GREEN s pioneering efforts inspire nationwide impact',
           images: [
@@ -37,13 +40,20 @@ const index = () => {
             { url: '/compliance/Biennial_Report_2012-14.png' },
             { url: '/compliance/Biennial_Report_2012-14.png' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoudation',
         }}
         twitter={{
           handle: '@handle',
           site: '@site',
           cardType: 'summary_large_image',
         }}
+      />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+        type="website"
       />
 
       <Header />
