@@ -18,7 +18,7 @@ const index = () => {
     <>
       <NextSeo
         title="Research And Communication - Green Foundation"
-        description=""
+        description="Explore the influence of research on sustainable agriculture and agrobiodiversity preservation via GREEN Foundation's initiatives focusing on value chains, indigenous seed diversity, and bolstering enterprises.        "
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,

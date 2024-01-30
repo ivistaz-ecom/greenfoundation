@@ -19,7 +19,7 @@ const index = () => {
     <>
       <NextSeo
         title="Seed banks - Green Foundation"
-        description=""
+        description="Community seed bank therefore is a system composed of all of the above. It is among the major strategies for maintaining genetic diversity in crop/plant species."
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,

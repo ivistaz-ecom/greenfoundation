@@ -31,7 +31,7 @@ const index = () => {
 
       <NextSeo
         title="Agro Biodiversity Conservation I Our reasons "
-        description=""
+        description="Our reasons to build the community for farmers range from Ecological to Economic, and from Political to raising awareness about it. Learn more."
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,
