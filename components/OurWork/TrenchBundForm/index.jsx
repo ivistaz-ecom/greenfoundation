@@ -19,7 +19,7 @@ const index = () => {
     <>
       <NextSeo
         title="Trench and bund formation - Green Foundations"
-        description=""
+        description="Learn how soil and agricultural waste is collected in trenches and are used to enrich the soil. Rainwater collected in trenches is directed to kitchen gardens or used to grow trees in the trenches themselves and farmers, grow fruit trees in the bunds on their farms"
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,

@@ -20,7 +20,7 @@ const index = () => {
 
       <NextSeo
         title="Seed yatras and fairs - Green Foundation"
-        description=""
+        description="Explore India's vibrant cultural legacy and discover sustainable farming practices on our platform. Experience the innovative use of adorned bullock carts to promote awareness through music, dance, and theater, fostering empowerment among farmers by providing them with indigenous seeds for their fields."
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,

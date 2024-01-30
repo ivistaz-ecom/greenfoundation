@@ -19,9 +19,8 @@ const index = () => {
   return (
     <>
       <NextSeo
-        title="Vermicompost - Green Foundation
-      "
-        description=""
+        title="Vermicompost - Green Foundation"
+        description="GREEN trains farmers to make and use vermicompost effectively within their own farms through rigorous training sessions that place great emphasis on quality."
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,

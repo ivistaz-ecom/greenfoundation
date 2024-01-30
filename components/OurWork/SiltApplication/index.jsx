@@ -18,7 +18,7 @@ const index = () => {
 
       <NextSeo
         title="Silt application - Green Foundation"
-        description=""
+        description="Learn about the advantages of applying silt to Indian agriculture. Green Foundation guides the farmers to raise crop yields in a sustainable manner and enhance soil fertility. Explore our efforts in promoting indigenous agricultural practices."
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,
