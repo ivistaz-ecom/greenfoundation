@@ -7,16 +7,19 @@ import '../../Style'
 import FinancialHeader from './FinancialHeader'
 import FinancialContent from './FinancialContent'
 import { NextSeo } from 'next-seo'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
-    <NextSeo
+      <NextSeo
         title="Financials - Green Foundation"
         description=""
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Financials - Green Foundation',
           description: '',
           images: [
@@ -37,7 +40,7 @@ const index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoudation',
         }}
         twitter={{
           handle: '@handle',
@@ -45,10 +48,18 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
-    <Header />
-    <FinancialHeader />
-    <FinancialContent />
-    <Footer />
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+        type="website"
+      />
+
+      <Header />
+      <FinancialHeader />
+      <FinancialContent />
+      <Footer />
     </>
   )
 }

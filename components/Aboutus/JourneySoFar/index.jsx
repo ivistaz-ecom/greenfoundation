@@ -57,6 +57,7 @@ const index = () => {
 
       <Schema
         target={`${pathname}`}
+        type="website"
       />
       <Header />
       <JourneyHeader />

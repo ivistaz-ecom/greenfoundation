@@ -60,6 +60,7 @@ const Index = () => {
 
       <AllPageSchema
         target={`${pathname}`}
+        type="website"
       />
 
       <Header />

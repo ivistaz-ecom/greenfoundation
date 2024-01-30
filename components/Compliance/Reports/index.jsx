@@ -7,16 +7,19 @@ import '../../Style'
 import RepostsHeader from './RepostsHeader'
 import ReportsContent from './ReportsContent'
 import { NextSeo } from 'next-seo'
+import AllPageSchema from '@/components/SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
-    <NextSeo
+      <NextSeo
         title="Yearly reports and receipts"
         description="Browse through the financial reports including the foreign contribution receipts associated with the Green Foundation, financial year wise"
-        canonical="https://www.canonical.ie/"
+        canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
-          url: 'https://www.url.ie/a',
+          url: `https://greenfoundation.in${pathname}`,
           title: 'Yearly reports and receipts',
           description: 'Browse through the financial reports including the foreign contribution receipts associated with the Green Foundation, financial year wise',
           images: [
@@ -37,7 +40,7 @@ const index = () => {
             { url: '' },
             { url: '' },
           ],
-          siteName: 'SiteName',
+          siteName: 'GreenFoudation',
         }}
         twitter={{
           handle: '@handle',
@@ -45,10 +48,19 @@ const index = () => {
           cardType: 'summary_large_image',
         }}
       />
-    <Header />
-        <RepostsHeader />
-        <ReportsContent />
-    <Footer />
+
+
+      <link rel="canonical" href={`https://greenfoundation.in${pathname}`} />
+
+      <AllPageSchema
+        target={`${pathname}`}
+        type="website"
+      />
+
+      <Header />
+      <RepostsHeader />
+      <ReportsContent />
+      <Footer />
     </>
   )
 }

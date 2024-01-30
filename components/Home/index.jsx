@@ -13,8 +13,11 @@ import { NextSeo } from 'next-seo'
 
 
 import '../Style'
+import AllPageSchema from '../SchemaComponents/Schema'
+import { usePathname } from 'next/navigation'
 
 const index = () => {
+  const pathname = usePathname();
   return (
     <>
       <NextSeo
@@ -52,6 +55,12 @@ const index = () => {
         }}
       />
       <link rel="canonical" href="https://greenfoundation.in/" />
+
+      <AllPageSchema
+        target={`${pathname}`}
+        type="website"
+      />
+
 
       <WebsiteSchema />
       <Header />

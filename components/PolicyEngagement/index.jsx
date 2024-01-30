@@ -53,6 +53,7 @@ const index = () => {
 
       <AllPageSchema
         target={`${pathname}`}
+        type="website"
       />
 
 

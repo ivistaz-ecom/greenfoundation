@@ -1,11 +1,11 @@
 import React from 'react'
 import { ArticleJsonLd } from 'next-seo';
 
-const AllPageSchema = ({ target }) => {
+const AllPageSchema = ({ target, type }) => {
 
     const schema = {
         "@context": "https://schema.org/",
-        "@type": "WebSite",
+        "@type": type,
         "name": "GreenFoundation",
         "url": "https://greenfoundation.in/",
         "potentialAction": {
