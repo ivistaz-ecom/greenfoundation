@@ -17,7 +17,7 @@ const Index = () => {
     <>
       <NextSeo
         title="Our Stories - Green Foundation"
-        description=""
+        description="Impacting the lives of farmers from diverse backgrounds has been fulfilling. Our stories of success make us proud and inspire us to commit to the community even more."
         canonical={`https://greenfoundation.in${pathname}`}
         openGraph={{
           url: `https://greenfoundation.in${pathname}`,
