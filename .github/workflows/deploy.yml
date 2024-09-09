@@ -31,7 +31,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }} # Your server's SSH private key
           passphrase: ${{ secrets.SSH_PASS }} # Your server's SSH key passphrase (if applicable)
           script: |
-            cd /home/react-staging/ivistaz/greenfoundation
+            cd /home/react-staging/ivistaz/
             git pull origin main
             npm install
             npm run build
