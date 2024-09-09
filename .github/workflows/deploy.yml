@@ -27,11 +27,17 @@ jobs:
       - name: Install expect
         run: sudo apt-get install -y expect
 
+      # Create a temporary file for the SSH key
+      - name: Create temporary SSH key file
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > /tmp/ssh_key
+          chmod 600 /tmp/ssh_key
+
       # Add SSH key with passphrase handling
       - name: Add SSH key with passphrase
         run: |
           /usr/bin/expect <<EOD
-          spawn ssh-add <(echo "${{ secrets.SSH_KEY }}")
+          spawn ssh-add /tmp/ssh_key
           expect "Enter passphrase"
           send "$SSH_PASSPHRASE\n"
           interact
@@ -49,3 +55,7 @@ jobs:
             npm run build
             pm2 restart greenfoundation || pm2 start npm --name "greenfoundation" -- start
           EOF
+
+      # Clean up temporary SSH key file
+      - name: Remove temporary SSH key file
+        run: rm -f /tmp/ssh_key
