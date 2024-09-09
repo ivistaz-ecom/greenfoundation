@@ -27,8 +27,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_PASS }} # Your server's SSH key passphrase (if applicable)
-
+          ssh-passphrase: ${{ secrets.SSH_PASS }}
 
       - name: SSH Deploy
         run: |
