@@ -1,1 +1,26 @@
 
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: greenfoundation nodejs app
+        uses: appleboy/ssh-action@main
+
+        with:
+          host: ${{ secrets.SSH_HOST }} # Your server's IP address
+          username: ${{ secrets.root }} # Your server's username
+          key: ${{ secrets.SSH_KEY }} # Your server's SSH private key
+          passphrase: ${{ secrets.SSH_PASS }} # Your server's SSH password
+
+          script: |
+            cd /home/react-staging/ivistaz/greenfoundation
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart greenfoundation || pm2 start npm --name "greenfoundation" -- start
