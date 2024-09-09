@@ -28,8 +28,8 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }} # Your server's IP address
           username: ${{ secrets.SSH_USERNAME }} # Your server's username
-          key: ${{ secrets.SSH_KEY }} # Your server's SSH private key
-          passphrase: ${{ secrets.SSH_PASS }} # Your server's SSH key passphrase (if applicable)
+          ssh-private-key: ${{ secrets.SSH_KEY }} # Your server's SSH private key
+          ssh-passphrase-key: ${{ secrets.SSH_PASS }} # Your server's SSH key passphrase (if applicable)
       - name: SSH Deploy
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
