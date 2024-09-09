@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: npm run build # Adjust if you have a build step
 
-      - name: Deploy to server
+      - name: SSH Deploy
         uses: webfactory/ssh-action@v0.7.1
         with:
           host: ${{ secrets.SSH_HOST }} # Your server's IP address
