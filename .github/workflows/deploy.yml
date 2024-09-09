@@ -21,13 +21,25 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build # Adjust if you have a build step
+        run: npm run build
 
-      - name: Add SSH key
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }} # Your server's SSH private key
+      # Install 'expect' to handle passphrase input
+      - name: Install expect
+        run: sudo apt-get install -y expect
 
+      # Add SSH key with passphrase handling
+      - name: Add SSH key with passphrase
+        run: |
+          /usr/bin/expect <<EOD
+          spawn ssh-add <(echo "${{ secrets.SSH_KEY }}")
+          expect "Enter passphrase"
+          send "$SSH_PASSPHRASE\n"
+          interact
+          EOD
+        env:
+          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
+
+      # Perform the SSH deployment
       - name: SSH Deploy
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
