@@ -25,7 +25,7 @@ jobs:
         run: npm run build # Adjust if you have a build step
 
       - name: Deploy to server
-        uses: appleboy/ssh-action@0.1.6  # Replace with the latest version
+        uses: webfactory/ssh-action@v0.7.1  # Replace with the latest version
         
         with:
           host: ${{ secrets.SSH_HOST }} # Your server's IP address
